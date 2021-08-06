@@ -1,0 +1,7 @@
+-r ./base.txt
+uvicorn==0.14.0
+celery==5.1.2
+click==7.1.2
+click-didyoumean==0.0.3
+click-plugins==1.1.1
+click-repl==0.2.0
