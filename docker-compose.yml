@@ -1,18 +1,18 @@
-version: "3.9"
+version: '3.9'
 
 services:
   db:
     image: postgres:11
     restart: always
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+    - postgres_data:/var/lib/postgresql/data/
     environment:
       # - POSTGRES_HOST_AUTH_METHOD=trust
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
       # - POSTGRES_DB=eagle_eye_local
     ports:
-      - 5432:5432
+    - 5432:5432
     # networks:
     #   services-network:
     #     aliases:
@@ -21,27 +21,27 @@ services:
     build: .
     # command: python /app/manage.py runserver 0.0.0.0:8080
     volumes:
-      - .:/app
+    - .:/app
     ports:
-      - 8080:8080
+    - 8080:8080
     depends_on:
-      - db
+    - db
     # links:
     #   - db
     #   - db:db
     env_file:
-      - .env
+    - .env
     environment:
-      - "DATABASE_URL=psql://postgres:postgres@db:5432/uptime"
-      - "DJANGO_SECRET_KEY=)*_s#exg*#w+#-xt=vu8b010%%a&p@4edwyj0=(nqq90b9a8*n"
-      - "DJANGO_DEBUG=True"
-      - "DJANGO_SECURE_SSL_REDIRECT=False" # new
-      - "DJANGO_SECURE_HSTS_SECONDS=0" # new
-      - "DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS=False" # new
-      - "DJANGO_SECURE_HSTS_PRELOAD=False" # new
+    - DATABASE_URL=psql://postgres:postgres@db:5432/uptime
+    - DJANGO_SECRET_KEY=)*_s#exg*#w+#-xt=vu8b010%%a&p@4edwyj0=(nqq90b9a8*n
+    - DJANGO_DEBUG=True
+    - DJANGO_SECURE_SSL_REDIRECT=False     # new
+    - DJANGO_SECURE_HSTS_SECONDS=0     # new
+    - DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS=False     # new
+    - DJANGO_SECURE_HSTS_PRELOAD=False     # new
       # secure cookies
-      - "DJANGO_SESSION_COOKIE_SECURE=False" # new
-      - "DJANGO_CSRF_COOKIE_SECURE=False" # new
+    - DJANGO_SESSION_COOKIE_SECURE=False     # new
+    - DJANGO_CSRF_COOKIE_SECURE=False     # new
     # networks:
     #   services-network:
     #     aliases:

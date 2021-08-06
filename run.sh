@@ -11,6 +11,8 @@
 
 export DJANGO_SETTINGS_MODULE=configs.dev
 
+pre-commit run --all-files
+
 python manage.py makemigrations
 
 python manage.py migrate
