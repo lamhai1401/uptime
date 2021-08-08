@@ -1,6 +1,24 @@
 version: '3.9'
 
 services:
+  redis:
+    image: redis
+    container_name: cache
+    volumes:
+    - redis_data:/data
+    ports:
+    - 6379:6379
+  celery:
+    build: .
+    command: [celery, -A, configs.clr, worker, -l, info]
+    depends_on:
+    - redis
+    env_file:
+    - .env
+    restart: unless-stopped
+    environment:
+    - BROKER_URL=redis://cache # celery setup
+    - CELERY_RESULT_BACKEND=redis://cache # celery setup
   db:
     image: postgres:11
     restart: always
@@ -26,20 +44,24 @@ services:
     - 8080:8080
     depends_on:
     - db
-    # links:
-    #   - db
-    #   - db:db
+    - redis
+    - celery
+    links:
+    - db
+    - redis
+    - celery
     env_file:
     - .env
     environment:
-    - DATABASE_URL=psql://postgres:postgres@db:5432/uptime
+    - REDIS_URL=redis://cache  # redis url
+    - DATABASE_URL=psql://postgres:postgres@db:5432/uptime # db set up
     - DJANGO_SECRET_KEY=)*_s#exg*#w+#-xt=vu8b010%%a&p@4edwyj0=(nqq90b9a8*n
     - DJANGO_DEBUG=True
     - DJANGO_SECURE_SSL_REDIRECT=False     # new
     - DJANGO_SECURE_HSTS_SECONDS=0     # new
     - DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS=False     # new
     - DJANGO_SECURE_HSTS_PRELOAD=False     # new
-      # secure cookies
+    # secure cookies
     - DJANGO_SESSION_COOKIE_SECURE=False     # new
     - DJANGO_CSRF_COOKIE_SECURE=False     # new
     # networks:
@@ -48,6 +70,7 @@ services:
     #       - web
 
 volumes:
+  redis_data:
   postgres_data:
 # networks:
 #   services-network:

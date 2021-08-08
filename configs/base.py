@@ -125,3 +125,11 @@ STATIC_URL = env("STATIC_URL")
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# celery setting
+BROKER_URL = env("REDIS_URL")
+CELERY_RESULT_BACKEND = env("REDIS_URL")
+CELERY_ACCEPT_CONTENT = ["application/json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TIMEZONE = "Africa/Nairobi"
