@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# clear all admin default table
+# python manage.py migrate admin zero
+# python manage.py migrate auth zero
+# python manage.py migrate contenttypes zero
+# python manage.py migrate sessions zero
+
 # psql -h localhost -p 5432 --username=postgres --password=postgres
 # create database uptime;
 
@@ -11,7 +17,7 @@
 
 export DJANGO_SETTINGS_MODULE=configs.dev
 
-pre-commit run --all-files
+# pre-commit run --all-files
 
 python manage.py makemigrations
 

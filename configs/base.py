@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     # 3rd party
     "rest_framework",
     # local app
+    "accounts.apps.AccountsConfig",
 ]
 
 # Database
@@ -100,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # custom user model
-# AUTH_USER_MODEL = "user.User"
+AUTH_USER_MODEL = "accounts.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
