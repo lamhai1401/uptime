@@ -44,7 +44,7 @@ repos:
         #     types: [python]
 
 - repo: https://github.com/asottile/pyupgrade
-  rev: v2.23.0
+  rev: v2.23.3
   hooks:
   - id: pyupgrade
     args: [--py36-plus, --py37-plus, --py38-plus, --py39-plus]
@@ -63,7 +63,7 @@ repos:
     language: python
     types: [python]
     args: [--load-plugins=pylint_django, --rcfile=.pylintrc, --disable=django-not-configured]
-    additional_dependencies: [environ, pylint-django, django-extensions, celery]
+    additional_dependencies: [environ, pylint-django, django-extensions, celery, djangorestframework, django-rest-auth]
 
         # - repo: local
         #   hooks:

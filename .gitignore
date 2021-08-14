@@ -132,3 +132,4 @@ dmypy.json
 .vscode
 *.god
 *migrations*
+/static/
