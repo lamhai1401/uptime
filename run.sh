@@ -26,3 +26,5 @@ python manage.py migrate
 python manage.py runserver
 
 # uvicorn decoupled_dj.asgi:application
+
+# ./manage.py test --pattern="tests_*.py"
