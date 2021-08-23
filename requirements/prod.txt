@@ -6,3 +6,4 @@ click-didyoumean==0.0.3
 click-plugins==1.1.1
 click-repl==0.2.0
 redis==3.5.3
+drf-yasg2==1.19.4

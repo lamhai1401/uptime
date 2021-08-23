@@ -63,7 +63,7 @@ repos:
     language: python
     types: [python]
     args: [--load-plugins=pylint_django, --rcfile=.pylintrc, --disable=django-not-configured]
-    additional_dependencies: [environ, pylint-django, django-extensions, celery, djangorestframework, django-rest-auth]
+    additional_dependencies: [environ, pylint-django, django-extensions, celery, djangorestframework, django-rest-auth, drf_yasg2]
 
         # - repo: local
         #   hooks:

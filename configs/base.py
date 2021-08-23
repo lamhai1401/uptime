@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "rest_auth",
-    "corsheaders",
+    "drf_yasg2",  # swagger
+    "corsheaders",  # cross origin
     # local app
     "accounts.apps.AccountsConfig",
 ]
@@ -155,3 +156,9 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
     ],
 }
+
+# cross origin
+CORS_ORIGIN_WHITELIST = (
+    "http://localhost:3000",
+    "http://localhost:8000",
+)
