@@ -36,7 +36,7 @@ Schemaview = get_schema_view(  # add swagger
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("accounts.urls")),
+    path("accounts/", include("accounts.urls")),
     path(
         "swagger/",
         Schemaview.with_ui("swagger", cache_timeout=0),  # add swagger

@@ -25,7 +25,7 @@ class TestUser(TestCase):
         Testing user login
         """
         response = self.client.post(
-            "/rest-auth/login/",
+            "/accounts/login/",
             {"email": "lamhai@gmail.com", "password": "abc123"},
             format="json",
         )
@@ -37,14 +37,14 @@ class TestUser(TestCase):
         Testing user logout
         """
         response = self.client.post(
-            "/rest-auth/login/",
+            "/accounts/login/",
             {"email": "lamhai@gmail.com", "password": "abc123"},
             format="json",
         )
 
         headers = {"HTTP_AUTHORIZATION": f"Token {response.json()['key']}"}
         response = self.client.post(
-            "/rest-auth/logout/",
+            "/accounts/logout/",
             **headers,
         )
 
@@ -55,14 +55,14 @@ class TestUser(TestCase):
         Testing user auth after login
         """
         response = self.client.post(
-            "/rest-auth/login/",
+            "/accounts/login/",
             {"email": "lamhai@gmail.com", "password": "abc123"},
             format="json",
         )
 
         headers = {"HTTP_AUTHORIZATION": f"Token {response.json()['key']}"}
         response = self.client.get(
-            "/test_auth/",
+            "/accounts/test_auth/",
             **headers,
         )
         self.assertEqual(response.status_code, 200)

@@ -13,12 +13,12 @@ urlpatterns = [
         name="test_auth",
     ),
     path(
-        "rest-auth/logout/",
+        "logout/",
         LogoutViewEx.as_view(),
         name="rest_logout",
     ),
     path(
-        "rest-auth/login/",
+        "login/",
         LoginView.as_view(),
         name="rest_login",
     ),
