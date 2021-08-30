@@ -36,6 +36,8 @@ Schemaview = get_schema_view(  # add swagger
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    # User management
+    path("accounts/", include("django.contrib.auth.urls")),  # update user detail
     path("accounts/", include("accounts.urls")),
     path(
         "swagger/",

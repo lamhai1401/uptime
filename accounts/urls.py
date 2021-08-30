@@ -4,7 +4,7 @@ Account url api
 from django.urls import path
 from rest_auth.views import LoginView
 
-from .views import HomeTemplateView, LogoutViewEx, TestAuthView
+from .views import HomeTemplateView, LogoutViewEx, RegisterView, TestAuthView
 
 urlpatterns = [
     path(
@@ -26,5 +26,10 @@ urlpatterns = [
         "",
         HomeTemplateView.as_view(),
         name="home",
+    ),
+    path(
+        "register/",
+        RegisterView.as_view(),
+        name="register",
     ),
 ]

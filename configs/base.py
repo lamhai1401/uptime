@@ -148,6 +148,7 @@ CELERY_TIMEZONE = "Africa/Nairobi"
 
 # Rest default permissions of you won't put it in views
 REST_FRAMEWORK = {
+    "PAGINATE_BY": 10,
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
